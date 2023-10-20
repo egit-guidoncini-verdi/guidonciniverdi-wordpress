@@ -96,4 +96,17 @@ function guidonciniverdi_hide_sq_category_display( $terms ) {
 }
 add_filter('get_terms', 'guidonciniverdi_hide_sq_category_display');
 
+// Impedisci alle sq di accedere alla dashboard
+// Impedisci al ruolo author di accedere alla dashboard
+function guidoncini_disable_sq_profile_page() {
+    $role = get_role( 'author' );
+    $role->remove_cap( 'read' );
+}
+register_activation_hook( __FILE__, 'guidoncini_disable_sq_profile_page' );
+function guidoncini_enable_sq_profile_page() {
+    $role = get_role( 'author' );
+    $role->add_cap( 'read' );
+}
+register_deactivation_hook( __FILE__, 'guidoncini_enable_sq_profile_page' );
+
 ?>
