@@ -86,4 +86,14 @@ function guidoncini_enable_sq_post_creation() {
 }
 register_deactivation_hook( __FILE__, 'guidoncini_enable_sq_post_creation' );
 
+// Nascondi i terms di ogni tassonomia alle squadriglie
+// Nascondi i terms di ogni tassonomia al ruolo author
+function guidonciniverdi_hide_sq_category_display( $terms ) {
+    if ( ! current_user_can( 'edit_others_posts' ) ) {
+	$terms = array();
+    }
+    return $terms;
+}
+add_filter('get_terms', 'guidonciniverdi_hide_sq_category_display');
+
 ?>
