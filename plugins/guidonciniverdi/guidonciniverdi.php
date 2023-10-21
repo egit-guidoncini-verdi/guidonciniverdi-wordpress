@@ -4,7 +4,7 @@
  * Plugin Name: Guidoncini Verdi
  */
 
-if( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) )
     exit( 'Restricted access' );
 
 /*
@@ -41,9 +41,9 @@ add_filter( 'request', 'guidoncini_show_current_sq_attachments_list' );
 // di vedere articoli non scritti da loro
 function guidoncini_show_current_sq_posts( $query ) {
     global $pagenow, $user_ID;
-    if( 'edit.php' != $pagenow || !$query->is_admin )
+    if ( 'edit.php' != $pagenow || !$query->is_admin )
 	return $query;
-    if( ! current_user_can( 'edit_others_posts' ) ) {
+    if ( ! current_user_can( 'edit_others_posts' ) ) {
 	global $user_ID;
 	$query->set( 'author', $user_ID );
     }
@@ -140,7 +140,7 @@ function guidoncini_add_specialita_to_taxonomy() {
 	array( 'name' => 'Pronto Intervento', 'slug' => 'pronto_intervento' )
     );
     foreach ( $guidoncini_elenco_specialita as $specialita ) {
-	if( ! term_exists( $specialita['slug'], 'specialita' ) ) {
+	if ( ! term_exists( $specialita['slug'], 'specialita' ) ) {
 	    $args = array( 'slug' => $specialita['slug'] );
 	    wp_insert_term( $specialita['name'], 'specialita', $args);
 	}
@@ -183,7 +183,7 @@ function guidoncini_add_category_terms() {
 	array( 'name' => 'Senza Categoria', 'slug' => 'uncategorized' ),
     );
     foreach ( $categories as $category ) {
-	if( ! term_exists( $category['slug'], 'category' ) ) {
+	if ( ! term_exists( $category['slug'], 'category' ) ) {
 	    $args = array( 'slug' => $category['slug'] );
 	    wp_insert_term( $category['name'], 'category', $args);
 	}
