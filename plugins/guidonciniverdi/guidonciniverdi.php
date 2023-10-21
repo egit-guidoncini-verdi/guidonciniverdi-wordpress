@@ -119,7 +119,7 @@ function guidoncini_redirect_sq_on_login( $redirect_to, $requested_redirect_to, 
 add_filter( 'login_redirect', 'guidoncini_redirect_sq_on_login', 10, 3 );
 
 /*
- * Tassonomie
+ * Tassonomie e categorie
  */
 
 // Aggiungi le specialità di squadriglia alla tassonomia specialità
