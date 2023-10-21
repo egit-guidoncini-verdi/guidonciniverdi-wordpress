@@ -173,4 +173,22 @@ function guidoncini_register_taxonomy_specialita () {
 }
 add_action( 'init', 'guidoncini_register_taxonomy_specialita' );
 
+// Aggiungi presentazione, imprese, missione alle categorie
+function guidoncini_add_category_terms() {
+    $categories = array(
+	array( 'name' => 'Presentazione', 'slug' => 'presentazione' ),
+	array( 'name' => 'Prima impresa', 'slug' => 'prima_impresa' ),
+	array( 'name' => 'Seconda impresa', 'slug' => 'seconda_impresa' ),
+	array( 'name' => 'Missione', 'slug' => 'missione' ),
+	array( 'name' => 'Senza Categoria', 'slug' => 'uncategorized' ),
+    );
+    foreach ( $categories as $category ) {
+	if( ! term_exists( $category['slug'], 'category' ) ) {
+	    $args = array( 'slug' => $category['slug'] );
+	    wp_insert_term( $category['name'], 'category', $args);
+	}
+    }    
+}
+add_action( 'init', 'guidoncini_add_category_terms' );
+
 ?>
