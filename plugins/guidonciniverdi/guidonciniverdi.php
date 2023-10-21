@@ -108,5 +108,13 @@ function guidoncini_enable_sq_profile_page() {
     $role->add_cap( 'read' );
 }
 register_deactivation_hook( __FILE__, 'guidoncini_enable_sq_profile_page' );
+// Redireziona dopo il login, se non si ha accesso a wp-admin
+function guidoncini_redirect_sq_on_login( $redirect_to, $requested_redirect_to, $user ) {
+    if ( $user && is_object( $user ) && is_a( $user, 'WP_User' ) && ! user_can($user, 'edit_others_posts') ) {
+        $redirect_to = esc_url( get_author_posts_url( $user->ID ) );
+    }
+    return $redirect_to;
+}
+add_filter( 'login_redirect', 'guidoncini_redirect_sq_on_login', 10, 3 );
 
 ?>
