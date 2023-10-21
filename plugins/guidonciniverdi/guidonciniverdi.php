@@ -110,11 +110,67 @@ function guidoncini_enable_sq_profile_page() {
 register_deactivation_hook( __FILE__, 'guidoncini_enable_sq_profile_page' );
 // Redireziona dopo il login, se non si ha accesso a wp-admin
 function guidoncini_redirect_sq_on_login( $redirect_to, $requested_redirect_to, $user ) {
-    if ( $user && is_object( $user ) && is_a( $user, 'WP_User' ) && ! user_can($user, 'edit_others_posts') ) {
+    if ( $user && is_object( $user ) && is_a( $user, 'WP_User' ) &&
+	 ! user_can($user, 'edit_others_posts') ) {
         $redirect_to = esc_url( get_author_posts_url( $user->ID ) );
     }
     return $redirect_to;
 }
 add_filter( 'login_redirect', 'guidoncini_redirect_sq_on_login', 10, 3 );
+
+/*
+ * Tassonomie
+ */
+
+// Aggiungi le specialità di squadriglia alla tassonomia specialità
+function guidoncini_add_specialita_to_taxonomy() {
+    // Elenco delle specialità di squadriglia e dei relativi slug
+    $guidoncini_elenco_specialita = array(
+	array( 'name' => 'Alpinismo', 'slug' => 'alpinismo' ),
+	array( 'name' => 'Artigianato', 'slug' => 'artigianato' ),
+	array( 'name' => 'Campismo', 'slug' => 'campismo' ),
+	array( 'name' => 'Civitas', 'slug' => 'civitas' ),
+	array( 'name' => 'Esplorazione', 'slug' => 'esplorazione' ),
+	array( 'name' => 'Espressione', 'slug' => 'espressione' ),
+	array( 'name' => 'Giornalismo', 'slug' => 'giornalismo' ),
+	array( 'name' => 'Internazionale', 'slug' => 'internazionale' ),
+	array( 'name' => 'Natura', 'slug' => 'natura' ),
+	array( 'name' => 'Nautica', 'slug' => 'nautica' ),
+	array( 'name' => 'Olimpia', 'slug' => 'olimpia' ),
+	array( 'name' => 'Pronto Intervento', 'slug' => 'pronto_intervento' )
+    );
+    foreach ( $guidoncini_elenco_specialita as $specialita ) {
+	if( ! term_exists( $specialita['slug'], 'specialita' ) ) {
+	    $args = array( 'slug' => $specialita['slug'] );
+	    wp_insert_term( $specialita['name'], 'specialita', $args);
+	}
+    }
+}
+
+// Crea la tassonomia specialità e popolala
+function guidoncini_register_taxonomy_specialita () {
+    $labels = array(
+	'name' => __( 'Specialità' ),
+	'singular_name' => __( 'Specialità' ),
+	'search_items' => __( 'Cerca Specialità' ),
+	'all_items' => __( 'Tutte le Specialità' ),
+	'edit_item' => __( 'Modifica Specialità' ),
+	'update_item' => __( 'Aggiorna Specialità' ),
+	'add_new_item' => __( 'Aggiungi Specialità' ),
+	'new_item_name' => __( 'Nuovo nome Specialità' ),
+	'menu_name' => __( 'Specialità' )
+    );
+    $args = array(
+	'hierarchical' => false,
+	'labels' => $labels,
+	'show_ui' => true,
+	'show_admin_column' => true,
+	'query_var' => true,
+	'rewrite' => [ 'slug' => 'specialita' ]
+    );
+    register_taxonomy( 'specialita', [ 'post' ], $args);
+    guidoncini_add_specialita_to_taxonomy();
+}
+add_action( 'init', 'guidoncini_register_taxonomy_specialita' );
 
 ?>
