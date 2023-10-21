@@ -191,4 +191,62 @@ function guidoncini_add_category_terms() {
 }
 add_action( 'init', 'guidoncini_add_category_terms' );
 
+/*
+ * Attributi addizionali degli utenti
+ */ 
+
+// Mostra in user-edit.php i campi addizionali
+function guidoncini_show_extra_profile_fields ( $user ) {
+    $fields = array( 'specialita' => '', 'gruppo' => '', 'zona' => '');
+    foreach ( $fields as $key => $value ) {
+	$fields[$key] = get_the_author_meta( $key, $user->ID );
+    }
+?>
+<h3>Informazioni addizionali</h3>
+<table class="form-table">
+    <?php
+    foreach ( $fields as $key => $value ) {
+	$escaped_key = esc_html($key);
+	$escaped_value = esc_html($value);
+	$label = ucfirst($escaped_key);
+	echo "<tr><th><label for='$escaped_key'>$label</label></th>";
+	echo "<td><input type='text' name='$escaped_key' id='$escaped_key' value='$escaped_value' class='regular-text'/></td></tr>";
+    }
+    ?>
+</table>
+<?php
+}
+add_action( 'show_user_profile', 'guidoncini_show_extra_profile_fields' );
+add_action( 'edit_user_profile', 'guidoncini_show_extra_profile_fields' );
+
+// Restituisci errore nel caso in cui si cerchi di inserire un valore vuoto
+function guidoncini_user_profile_update_errors( $errors, $update, $user ) {
+    $show_error = false;
+    $fields = array( 'specialita', 'gruppo', 'zona' );
+    foreach ( $fields as $field ) {
+	if ( empty( $_POST[$field] ) ) {
+	    $show_error = true;
+	}
+    }
+    if ( $show_error ) {
+	$errors->add( 'year_of_birth_error', __( '<strong>ERRORE</strong>: Uno dei campi non è valido.', 'crf' ) );
+    }
+}
+add_action( 'user_profile_update_errors', 'guidoncini_user_profile_update_errors', 10, 3 );
+
+// Salva nel db le informazioni addizionali
+function guidoncini_update_profile_fields( $user_id ) {
+    if ( ! current_user_can( 'edit_user', $user_id ) ) {
+	return false;
+    }
+    $fields = array( 'specialita', 'gruppo', 'zona' );
+    foreach ( $fields as $field ) {
+	if ( ! empty( $_POST[$field] ) ) {
+	    update_user_meta( $user_id, $field, $_POST[$field] );
+	}
+    }
+}
+add_action( 'personal_options_update', 'guidoncini_update_profile_fields' );
+add_action( 'edit_user_profile_update', 'guidoncini_update_profile_fields' );
+
 ?>
