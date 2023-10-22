@@ -234,7 +234,7 @@ function guidoncini_user_profile_update_errors( $errors, $update, $user ) {
 	}
     }
     if ( $show_error ) {
-	$errors->add( 'year_of_birth_error', __( '<strong>ERRORE</strong>: Uno dei campi non è valido.', 'crf' ) );
+	$errors->add( 'additional_field_error', __( '<strong>ERRORE</strong>: Uno dei campi non è valido.', 'crf' ) );
     }
 }
 add_action( 'user_profile_update_errors', 'guidoncini_user_profile_update_errors', 10, 3 );
