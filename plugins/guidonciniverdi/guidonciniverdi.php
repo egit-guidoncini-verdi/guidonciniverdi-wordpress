@@ -201,6 +201,7 @@ function guidoncini_show_extra_profile_fields ( $user ) {
     foreach ( $fields as $key => $value ) {
 	$fields[$key] = get_the_author_meta( $key, $user->ID );
     }
+    $rinnovo = get_the_author_meta( 'rinnovo', $user->ID );
 ?>
 <h3>Informazioni addizionali</h3>
 <table class="form-table">
@@ -212,6 +213,10 @@ function guidoncini_show_extra_profile_fields ( $user ) {
 	echo "<tr><th><label for='$escaped_key'>$label</label></th>";
 	echo "<td><input type='text' name='$escaped_key' id='$escaped_key' value='$escaped_value' class='regular-text'/></td></tr>";
     }
+    echo "<tr><th><label for='rinnovo'>Rinnovo</label></th>";
+    echo "<td><input type='checkbox' name='rinnovo' id='rinnovo' value='rinnovo'";
+    echo $rinnovo ? " checked='checked'" : "";
+    echo "/></td></tr>";
     ?>
 </table>
 <?php
@@ -245,6 +250,7 @@ function guidoncini_update_profile_fields( $user_id ) {
 	    update_user_meta( $user_id, $field, $_POST[$field] );
 	}
     }
+    update_user_meta( $user_id, 'rinnovo', ! empty( $_POST['rinnovo'] ) );
 }
 add_action( 'personal_options_update', 'guidoncini_update_profile_fields' );
 add_action( 'edit_user_profile_update', 'guidoncini_update_profile_fields' );
