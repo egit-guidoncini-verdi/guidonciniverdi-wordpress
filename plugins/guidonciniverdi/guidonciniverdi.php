@@ -85,6 +85,16 @@ function guidoncini_enable_sq_post_creation() {
     $role->add_cap( 'create_posts' );
 }
 register_deactivation_hook( __FILE__, 'guidoncini_enable_sq_post_creation' );
+function guidoncini_enable_admin_post_creation() {
+    $role = get_role( 'administrator' );
+    $role->add_cap( 'create_posts' );
+}
+register_activation_hook( __FILE__, 'guidoncini_enable_admin_post_creation' );
+function guidoncini_disable_admin_post_creation() {
+    $role = get_role( 'administrator' );
+    $role->remove_cap( 'create_posts' );
+}
+register_deactivation_hook( __FILE__, 'guidoncini_disable_admin_post_creation' );
 
 // Nascondi i terms di ogni tassonomia alle squadriglie
 // Nascondi i terms di ogni tassonomia al ruolo author
