@@ -265,4 +265,19 @@ function guidoncini_update_profile_fields( $user_id ) {
 add_action( 'personal_options_update', 'guidoncini_update_profile_fields' );
 add_action( 'edit_user_profile_update', 'guidoncini_update_profile_fields' );
 
+/*
+ * Customizzazione di blocchi
+ */
+
+// Restituisci i soli post degli autori del post corrente quando tra
+// le keyword nel query loop block c'è ":guidoncini-filter-sq"
+function guidoncini_query_block_filter_sq( $query ) {
+    if ( $query['s'] == ':guidoncini-filter-sq' ) {
+ 	$query['s'] = '';
+ 	$query['author'] = get_the_author_meta( 'ID' );
+    }
+    return $query;
+}
+add_filter( 'query_loop_block_query_vars', 'guidoncini_query_block_filter_sq' )
+
 ?>
