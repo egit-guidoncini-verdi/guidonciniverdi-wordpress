@@ -176,7 +176,7 @@ function guidoncini_register_taxonomy_specialita () {
 	'show_ui' => true,
 	'show_admin_column' => true,
 	'query_var' => true,
-	'rewrite' => [ 'slug' => 'specialita' ]
+	'rewrite' => true
     );
     register_taxonomy( 'specialita', [ 'post' ], $args);
     guidoncini_add_specialita_to_taxonomy();
