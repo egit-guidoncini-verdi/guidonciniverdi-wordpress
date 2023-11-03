@@ -235,19 +235,19 @@ add_action( 'show_user_profile', 'guidoncini_show_extra_profile_fields' );
 add_action( 'edit_user_profile', 'guidoncini_show_extra_profile_fields' );
 
 // Restituisci errore nel caso in cui si cerchi di inserire un valore vuoto
-function guidoncini_user_profile_update_errors( $errors, $update, $user ) {
-    $show_error = false;
-    $fields = array( 'specialita', 'gruppo', 'zona' );
-    foreach ( $fields as $field ) {
-	if ( empty( $_POST[$field] ) ) {
-	    $show_error = true;
-	}
-    }
-    if ( $show_error ) {
-	$errors->add( 'additional_field_error', __( '<strong>ERRORE</strong>: Uno dei campi non è valido.', 'crf' ) );
-    }
-}
-add_action( 'user_profile_update_errors', 'guidoncini_user_profile_update_errors', 10, 3 );
+/* function guidoncini_user_profile_update_errors( $errors, $update, $user ) {
+ *     $show_error = false;
+ *     $fields = array( 'specialita', 'gruppo', 'zona' );
+ *     foreach ( $fields as $field ) {
+ * 	if ( empty( $_POST[$field] ) ) {
+ * 	    $show_error = true;
+ * 	}
+ *     }
+ *     if ( $show_error ) {
+ * 	$errors->add( 'additional_field_error', __( '<strong>ERRORE</strong>: Uno dei campi non è valido.', 'crf' ) );
+ *     }
+ * }
+ * add_action( 'user_profile_update_errors', 'guidoncini_user_profile_update_errors', 10, 3 ); */
 
 // Salva nel db le informazioni addizionali
 function guidoncini_update_profile_fields( $user_id ) {
