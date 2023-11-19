@@ -1,0 +1,39 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"layout":{"inherit":true}} -->
+<div class="wp-block-group">
+<!-- wp:query-title {"type":"archive"} /-->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"inherit":true}} -->
+<div class="wp-block-group">
+<!-- wp:query {"tagName":"main","query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"asc","orderBy":"date","search":":guidoncini-filter-specialita","inherit":false}} -->
+<main class="wp-block-query"><!-- wp:post-template -->
+  <!-- wp:post-featured-image /-->
+
+  <!-- wp:post-title {"isLink":true} /-->
+  <!-- /wp:post-template -->
+
+  <!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->
+  <!-- wp:query-pagination-previous /-->
+
+  <!-- wp:query-pagination-numbers /-->
+
+  <!-- wp:query-pagination-next /-->
+  <!-- /wp:query-pagination -->
+
+
+  <!-- wp:query-no-results -->
+  <!-- wp:paragraph {"placeholder":"Nessuna squadriglia sta lavorando a questa specialità."} -->
+  <p>
+    Nessuna squadriglia sta lavorando a questa specialità.
+  </p>
+  <!-- /wp:paragraph -->
+  <!-- /wp:query-no-results -->
+</main>
+<!-- /wp:query -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
