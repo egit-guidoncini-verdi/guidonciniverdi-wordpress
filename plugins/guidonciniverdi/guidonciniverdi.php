@@ -282,6 +282,26 @@ function guidoncini_query_block_filter_sq( $query ) {
     }
     return $query;
 }
-add_filter( 'query_loop_block_query_vars', 'guidoncini_query_block_filter_sq' )
+add_filter( 'query_loop_block_query_vars', 'guidoncini_query_block_filter_sq' );
+
+// Restituisici i soli post presentazione della specialità quando
+// tra le keyword nel query loop block c'è ":guidoncini-filter-specialita"
+function guidoncini_query_block_filter_specialita( $query ) {
+    if ( $query['s'] == ':guidoncini-filter-specialita' ) {
+	$queried_object = get_queried_object();
+ 	$query['s'] = '';
+	$query['category_name'] = 'presentazione';
+	$query['tax_query'] = array(
+	    array(
+	 	'taxonomy' => 'specialita',
+	 	'field' => 'slug',
+	 	'terms' => $queried_object->slug
+	    )
+	);
+    }
+    return $query;
+}
+
+add_filter( 'query_loop_block_query_vars', 'guidoncini_query_block_filter_specialita' );
 
 ?>
