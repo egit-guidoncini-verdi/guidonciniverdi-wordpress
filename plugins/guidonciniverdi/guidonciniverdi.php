@@ -132,10 +132,8 @@ add_filter( 'login_redirect', 'guidoncini_redirect_sq_on_login', 10, 3 );
  * Tassonomie e categorie
  */
 
-// Aggiungi le specialità di squadriglia alla tassonomia specialità
-function guidoncini_add_specialita_to_taxonomy() {
-    // Elenco delle specialità di squadriglia e dei relativi slug
-    $guidoncini_elenco_specialita = array(
+function guidoncini_list_specialita() {
+    return array(
 	array( 'name' => 'Alpinismo', 'slug' => 'alpinismo' ),
 	array( 'name' => 'Artigianato', 'slug' => 'artigianato' ),
 	array( 'name' => 'Campismo', 'slug' => 'campismo' ),
@@ -149,6 +147,12 @@ function guidoncini_add_specialita_to_taxonomy() {
 	array( 'name' => 'Olimpia', 'slug' => 'olimpia' ),
 	array( 'name' => 'Pronto Intervento', 'slug' => 'pronto_intervento' )
     );
+}
+
+// Aggiungi le specialità di squadriglia alla tassonomia specialità
+function guidoncini_add_specialita_to_taxonomy() {
+    // Elenco delle specialità di squadriglia e dei relativi slug
+    $guidoncini_elenco_specialita = guidoncini_list_specialita();
     foreach ( $guidoncini_elenco_specialita as $specialita ) {
 	if ( ! term_exists( $specialita['slug'], 'specialita' ) ) {
 	    $args = array( 'slug' => $specialita['slug'] );
