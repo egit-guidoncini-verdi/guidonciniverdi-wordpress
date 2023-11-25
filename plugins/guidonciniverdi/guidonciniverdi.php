@@ -209,6 +209,36 @@ add_action( 'init', 'guidoncini_add_category_terms' );
  * Attributi addizionali degli utenti
  */ 
 
+// Registra i meta e rendili disponibili per l'accesso alla REST API
+function guidoncini_register_meta () {
+    $fields = array(
+	'specialita' => 'Specialità per la quale la sq sta lavorando.',
+	'gruppo' => 'Gruppo della sq.',
+	'zona' => 'Zona della sq.'
+    );
+    foreach ( $fields as $key => $val ) {
+	$args = array(
+	    'type' => 'string',
+	    'description' => $val,
+	    'single' => true,
+	    'default' => '',
+	    'show_in_rest' => true
+	);
+	register_meta( 'user', $key, $args );
+	register_meta( 'post', $key, $args );
+    }
+    $args = array(
+	'type' => 'boolean',
+	'description' => 'La sq sta rinnovando la specialità.',
+	'single' => true,
+	'default' => false,
+	'show_in_rest' => true
+    );
+    register_meta( 'user', 'rinnovo', $args );
+    register_meta( 'post', 'rinnovo', $args );
+}
+add_action( 'rest_api_init', 'guidoncini_register_meta' );
+
 // Mostra in user-edit.php i campi addizionali
 function guidoncini_show_extra_profile_fields ( $user ) {
     $fields = array( 'specialita' => '', 'gruppo' => '', 'zona' => '');
