@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "guidonciniverdi-blocks/zona",
+  "version": "0.1.0",
+  "title": "Zona",
+  "category": "widgets",
+  "icon": "format-quote",
+  "description": "Mostra la zona della squadriglia che ha creato il post.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "textdomain": "guidonciniverdi-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "usesContext": [
+    "postId",
+    "postType"
+  ]
+}

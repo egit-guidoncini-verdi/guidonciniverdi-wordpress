@@ -1,4 +1,5 @@
 plugins/*
 !plugins/guidonciniverdi
+!plugins/guidonciniverdi-blocks
 themes/*
 !themes/guidonciniverdi
