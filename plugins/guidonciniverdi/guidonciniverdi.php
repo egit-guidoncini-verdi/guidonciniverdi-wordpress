@@ -25,8 +25,10 @@ add_filter( 'ajax_query_attachments_args', 'guidoncini_show_current_sq_attachmen
 function guidoncini_show_current_sq_attachments_list( $query ) {
     global $user_ID;
     if ( function_exists( 'get_current_screen')  ) { 
-	$screen = get_current_screen(); 
-    } 
+	    $screen = get_current_screen(); 
+    } else {
+		return $query;
+	}
     if ( in_array( $screen->id, array( 'upload' ) ) ) {
         if ( ! current_user_can( 'edit_others_posts' ) ) {
             $query['author'] = $user_ID;
@@ -307,7 +309,7 @@ add_action( 'edit_user_profile_update', 'guidoncini_update_profile_fields' );
 // Restituisci i soli post degli autori del post corrente quando tra
 // le keyword nel query loop block c'è ":guidoncini-filter-sq"
 function guidoncini_query_block_filter_sq( $query ) {
-    if ( $query['s'] == ':guidoncini-filter-sq' ) {
+    if ( isset($query['s']) && $query['s'] == ':guidoncini-filter-sq' ) {
  	$query['s'] = '';
  	$query['author'] = get_the_author_meta( 'ID' );
     }
