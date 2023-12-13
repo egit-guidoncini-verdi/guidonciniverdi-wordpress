@@ -1,0 +1,31 @@
+.wp-block-post-title {
+  @apply text-5xl font-bold mb-4 text-transparent bg-clip-text;
+  background-color: var(--wp--preset--color--verde-eg);
+}
+
+.deco-div {
+  @apply pl-6 block;
+  min-width: 16rem;
+  background-image: url(assets/images/texture.white60.png);
+  background-size: 850px;
+  
+  .deco-contents {
+    @apply w-full h-full p-2 bg-white;
+    background-color: var(--light-color);
+  }
+  
+  .taxonomy-specialita, .deco-value {
+    font-family: var(--wp--preset--font-family--roboto-slab);
+    @apply text-xl font-bold;
+  }
+  
+  &.spec {
+    background-color: var(--wp--preset--color--verde-eg);
+    --light-color: var(--wp--preset--color--verde-chiaro);
+  }
+  
+  &.gruppo {
+    background-color: var(--wp--preset--color--viola-agesci);
+    --light-color: var(--wp--preset--color--viola-chiaro);
+  }
+}

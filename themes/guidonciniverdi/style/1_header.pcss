@@ -1,3 +1,27 @@
+.header-container {
+  @apply relative py-6 mb-12 bg-white;
+}
+
 .wp-block-site-title {
-  @apply font-bold;
+  @apply text-xl font-medium;
+}
+
+.site-info-container {
+  @apply relative;
+}
+
+.logo-image {
+  /* Image aspect ratio: 2:1 */
+  @apply bg-no-repeat bg-contain h-24 w-12
+    absolute -my-6 xl:-left-16;
+
+    background-image: url(assets/images/agesci.svg);
+}
+
+.site-title {
+  @apply pl-14 xl:pl-0;
+}
+
+.header-container nav {
+  @apply md:text-sm text-gray-500 uppercase gap-4;
 }

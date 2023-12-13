@@ -1,37 +1,56 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
-<!-- wp:group {"layout":{"inherit":true}} -->
-<div class="wp-block-group">
-  <!-- wp:query {"query":{"perPage":"4","pages":0,"offset":0,"postType":"post","order":"asc","orderBy":"date","search":":guidoncini-filter-sq","inherit":false}} -->
-  <div class="wp-block-query">
-    <!-- wp:post-template {"layout":{"type":"grid","columnCount":4}} -->
-    <!-- wp:post-title {"textAlign":"center","level":6,"isLink":true} /-->
-    <!-- /wp:post-template -->
-
-    <!-- wp:query-no-results -->
-    <!-- wp:paragraph {"placeholder":"Nessun articolo per questa squadriglia!"} -->
-    <p></p>
-    <!-- /wp:paragraph -->
-    <!-- /wp:query-no-results -->
+<!-- wp:query {"tagName":"main","layout":{"inherit":true}} -->
+<main class="wp-block-query">
+  <!-- wp:post-template -->
+  <!-- wp:group -->
+  <div class="wp-block-group">
+      <div class="flex flex-col md:flex-row justify-between">
+          <!-- wp:post-title {"isLink":true} /-->
+          <!-- wp:html -->
+          <div class="flex flex-col gap-4 mb-4">
+              <div class="deco-div spec">
+                  <div class="deco-contents">
+                      <p>Specialità:</p>
+                      <!-- wp:post-terms {"term": "specialita"} /-->
+                  </div>
+              </div>
+              <div class="deco-div gruppo">
+                  <div class="deco-contents">
+                      <p>Gruppo Scout:</p>
+                      <p class="deco-value">Pinerolo 3</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- /wp:html -->
+      <!-- wp:post-featured-image {"isLink":true} /-->
+      <!-- wp:post-content /-->
+      <!-- wp:group {"layout":{"type":"flex"}} -->
+      <div class="wp-block-group text-sm">
+          <!-- wp:post-date {"isLink":true} /-->
+          <!-- wp:post-terms {"term": "category"} /-->
+          <!-- wp:post-terms {"term": "post_tag"} /-->
+      </div>
+      <!-- /wp:group -->
+      <!-- wp:spacer {"height":40} -->
+      <div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
+      <!-- /wp:spacer -->
   </div>
-  <!-- /wp:query -->
-</div>
-<!-- /wp:group -->
+  <!-- /wp:group -->
+  <!-- /wp:post-template -->
+  <!-- wp:group {"layout":{"inherit":true}} -->
+      <div class="wp-block-group">
+      <!-- wp:query-pagination -->
+          <!-- wp:query-pagination-previous /-->
 
-<!-- wp:group {"layout":{"inherit":true}} -->
-<div class="wp-block-group">
-<!-- wp:post-title /-->
-</div>
-<!-- /wp:group -->
+          <!-- wp:query-pagination-numbers /-->
 
-<!-- wp:group {"tagName":"main","lock":{"move":false,"remove":true}} -->
-<main class="wp-block-group">
-<!-- wp:post-featured-image {"align":"full"} /-->
-
-<!-- wp:post-content {"layout":{"inherit":true},"lock":{"move":false,"remove":true}} /-->
-
-</main>
-
-<!-- /wp:group -->
+          <!-- wp:query-pagination-next /-->
+      <!-- /wp:query-pagination -->
+      </div>
+      <!-- /wp:group -->
+  </main>
+<!-- /wp:query -->
 
 <!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

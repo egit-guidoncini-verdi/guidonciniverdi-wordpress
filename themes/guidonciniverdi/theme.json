@@ -9,24 +9,24 @@
     "color": {
       "palette": [
         {
-          "name": "Dark green",
-          "slug": "dark-green",
-          "color": "#21a067"
+          "name": "Viola AGESCI",
+          "slug": "viola-agesci",
+          "color": "#462678"
         },
         {
-          "name": "Light green",
-          "slug": "light-green",
-          "color": "#8ac7ac"
+          "name": "Viola chiaro",
+          "slug": "viola-chiaro",
+          "color": "#dedff4"
         },
         {
-          "name": "White",
-          "slug": "white",
-          "color": "#ffffff"
+          "name": "Verde EG",
+          "slug": "verde-eg",
+          "color": "#21A067"
         },
         {
-          "name": "Dark white",
-          "slug": "dark-white",
-          "color": "#f7f7f6"
+          "name": "Verde chiaro",
+          "slug": "verde-chiaro",
+          "color": "#ECE9E6"
         },
         {
           "name": "Black",
@@ -109,15 +109,15 @@
           "slug": "small"
         },
         {
-          "size": "1.125rem",
+          "size": "1.277rem",
           "slug": "medium"
         },
         {
-          "size": "1.75rem",
+          "size": "1.842rem",
           "slug": "large"
         },
         {
-          "size": "2.25rem",
+          "size": "2.082rem",
           "slug": "x-large"
         }
       ]
@@ -133,36 +133,6 @@
       "heading": {
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--roboto-slab)"
-        }
-      },
-      "h1": {
-        "typography": {
-          "fontSize": "var(--wp--preset--font-size--x-large)"
-        }
-      },
-      "h2": {
-        "typography": {
-          "fontSize": "var(--wp--preset--font-size--large)"
-        }
-      },
-      "h3": {
-        "typography": {
-          "fontSize": "var(--wp--preset--font-size--medium)"
-        }
-      },
-      "h4": {
-        "typography": {
-          "fontSize": "var(--wp--preset--font-size--small)"
-        }
-      },
-      "h5": {
-        "typography": {
-          "fontSize": "var(--wp--preset--font-size--small)"
-        }
-      },
-      "h6": {
-        "typography": {
-          "fontSize": "var(--wp--preset--font-size--small)"
         }
       }
     }
