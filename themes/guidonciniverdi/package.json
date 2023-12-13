@@ -1,4 +1,5 @@
 {
+  "name": "guidonciniverdi",
   "scripts": {
     "dev": "postcss --watch --verbose -o style.css style/main.pcss",
     "start-sync-server": "browser-sync start --files 'style.css,templates/*.html,parts/*.html' --no-notify"

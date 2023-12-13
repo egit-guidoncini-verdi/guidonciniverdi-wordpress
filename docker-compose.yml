@@ -1,7 +1,13 @@
 version: '3.1'
 
-services:
+x-base:
+  frontend: &base-frontend
+    image: node:current-slim
+    working_dir: /var/frontend
+    volumes:
+      - ./themes/guidonciniverdi:/var/frontend:z
 
+services:
   wordpress:
     image: wordpress:latest
     restart: always
@@ -17,7 +23,17 @@ services:
       - wordpress:/var/www/html
       - ./themes:/var/www/html/wp-content/themes:rw,z
       - ./plugins:/var/www/html/wp-content/plugins:rw,z
-
+  
+  frontend:
+    <<: *base-frontend
+    command: npm run dev
+  
+  frontend-reloader:
+    <<: *base-frontend
+    command: npm run start-sync-server
+    ports:
+      - 3000:3000
+  
   db:
     image: mysql:5.7
     restart: always
