@@ -1,46 +1,55 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
-<!-- wp:query {"tagName":"main","layout":{"inherit":true}} -->
+<!-- wp:query {"tagName":"main"} -->
 <main class="wp-block-query">
   <!-- wp:post-template -->
-  <!-- wp:group -->
-  <div class="wp-block-group">
-      <div class="flex flex-col md:flex-row justify-between">
-          <!-- wp:post-title {"isLink":true} /-->
+    <!-- wp:group {"layout":{"type":"constrained"}} -->
+    <div class="wp-block-group">
+      <!-- wp:cover {"useFeaturedImage":true,"dimRatio":50,"align":"full","layout":{"type":"constrained"}} -->
+      <div class="wp-block-cover alignfull main-cover">
+        <span aria-hidden="true" class="wp-block-cover__background has-background-dim"></span>
+        <div class="wp-block-cover__inner-container">
           <!-- wp:html -->
-          <div class="flex flex-col gap-4 mb-4">
+          <div class="alignwide main-cover-text">
+            <!-- wp:post-title {"isLink":true} /-->
+            <div class="flex flex-col gap-4 mb-4">
               <div class="deco-div spec">
-                  <div class="deco-contents">
-                      <p>Specialità:</p>
-                      <!-- wp:post-terms {"term": "specialita"} /-->
-                  </div>
+                <div class="deco-contents">
+                  <p>Specialità:</p>
+                  <!-- wp:post-terms {"term": "specialita"} /-->
+                </div>
               </div>
               <div class="deco-div gruppo">
-                  <div class="deco-contents">
-                      <p>Gruppo Scout:</p>
-                      <p class="deco-value">Pinerolo 3</p>
-                  </div>
+                <div class="deco-contents">
+                  <p>Gruppo Scout:</p>
+                  <p class="deco-value">Pinerolo 3</p>
+                </div>
               </div>
+            </div>        
           </div>
+          <!-- /wp:html -->
+        </div>
       </div>
-      <!-- /wp:html -->
-      <!-- wp:post-featured-image {"isLink":true} /-->
-      <!-- wp:post-content /-->
-      <!-- wp:group {"layout":{"type":"flex"}} -->
-      <div class="wp-block-group text-sm">
-          <!-- wp:post-date {"isLink":true} /-->
-          <!-- wp:post-terms {"term": "category"} /-->
-          <!-- wp:post-terms {"term": "post_tag"} /-->
+      <!-- /wp:cover -->
+      
+      <!-- wp:group {"layout":{"type":"constrained"}} -->
+      <div class="wp-block-group">
+        <!-- wp:post-content /-->
+        <!-- wp:group {"layout":{"type":"flex"}} -->
+        <div class="wp-block-group entry-after-content">
+          <!-- wp:html -->
+          <p>Ultimo aggiornamento: <!-- wp:post-date /--></p>
+          <!-- /wp:html -->
+        </div>
+        <!-- /wp:group -->
       </div>
       <!-- /wp:group -->
-      <!-- wp:spacer {"height":40} -->
-      <div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
-      <!-- /wp:spacer -->
-  </div>
-  <!-- /wp:group -->
+    </div>
+    <!-- /wp:group -->
   <!-- /wp:post-template -->
-  <!-- wp:group {"layout":{"inherit":true}} -->
-      <div class="wp-block-group">
+
+  <!-- wp:group {"layout":{"type": "constrained"}} -->
+      <div class="wp-block-group entry-content-container">
       <!-- wp:query-pagination -->
           <!-- wp:query-pagination-previous /-->
 

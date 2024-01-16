@@ -1,6 +1,48 @@
-.wp-block-post-title {
-  @apply text-5xl font-bold mb-4 text-transparent bg-clip-text;
-  background-color: var(--wp--preset--color--verde-eg);
+.main-cover {
+  @apply mb-8;
+}
+
+.main-cover-text {
+  @apply flex flex-col md:flex-row justify-between 
+    my-16 md:my-8 p-8 border-b-8 bg-white text-black;
+  border-color: var(--wp--preset--color--verde-eg);
+
+  .wp-block-post-title a {
+    @apply text-5xl font-bold mb-8;
+    color: var(--wp--preset--color--verde-eg);
+  }
+}
+
+.entry-content-container {
+  @apply mb-12;
+}
+
+.entry-content {
+  @apply mb-8;
+
+  .wp-block-group, .wp-block-columns {
+    @apply gap-4;
+  }
+
+  h1 {
+    @apply my-8 text-4xl font-bold;
+  }
+  
+  h2 {
+    @apply mb-4 text-2xl font-bold;
+  }
+}
+
+.wp-block-buttons {
+  @apply mt-4;
+
+  .wp-block-button__link {
+    background-color: var(--wp--preset--color--verde-eg);
+  }
+}
+
+.entry-after-content {
+  @apply text-sm text-gray-500 font-medium;
 }
 
 .deco-div {

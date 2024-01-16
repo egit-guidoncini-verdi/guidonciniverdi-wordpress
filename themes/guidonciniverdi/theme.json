@@ -19,6 +19,11 @@
           "color": "#dedff4"
         },
         {
+          "name": "Viola scuro",
+          "slug": "viola-scuro",
+          "color": "#220639"
+        },
+        {
           "name": "Verde EG",
           "slug": "verde-eg",
           "color": "#21A067"
