@@ -84,3 +84,27 @@
     --light-color: var(--wp--preset--color--viola-chiaro);
   }
 }
+
+.taxonomy-query {
+  @apply grid gap-8 md:grid-cols-3 mb-16;
+
+  ul {
+    display: contents;
+  }
+  
+  .wp-block-post {
+    @apply px-4 pb-4;
+    background-color: var(--wp--preset--color--verde-chiaro);
+  }
+
+  .wp-block-post-featured-image {
+    @apply p-6 -mx-4 bg-white text-black;
+    background-image: url(assets/images/texture.white60.png);
+    background-color: var(--wp--preset--color--verde-eg);
+    background-size: 850px;
+  }
+
+  .wp-block-post-title {
+    @apply mt-4 text-xl font-bold;
+  }
+}

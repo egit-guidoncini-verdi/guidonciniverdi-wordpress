@@ -1,18 +1,30 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
-<!-- wp:group {"layout":{"inherit":true}} -->
 <div class="wp-block-group">
-<!-- wp:query-title {"type":"archive"} /-->
+  <!-- wp:cover {"dimRatio":50,"align":"full","layout":{"type":"constrained"}} -->
+  <div class="wp-block-cover alignfull main-cover">
+    <span aria-hidden="true" class="wp-block-cover__background has-background-dim"></span>
+    <div class="wp-block-cover__inner-container">
+      <!-- wp:html -->
+      <div class="alignwide">
+        <div class="main-cover-text">
+          <!-- wp:query-title {"type":"archive", "className": "has-text-color"} /-->
+        </div>
+      </div>
+      <!-- /wp:html -->
+    </div>
+  </div>
+  <!-- /wp:cover -->
 </div>
-<!-- /wp:group -->
 
 <!-- wp:group {"layout":{"inherit":true}} -->
 <div class="wp-block-group">
 <!-- wp:query {"tagName":"main","query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"asc","orderBy":"date","search":":guidoncini-filter-specialita","inherit":false}} -->
-<main class="wp-block-query"><!-- wp:post-template -->
-  <!-- wp:post-featured-image /-->
-
-  <!-- wp:post-title {"isLink":true} /-->
+<main class="wp-block-query taxonomy-query">
+  <!-- wp:post-template -->
+    <!-- wp:post-featured-image {"isLink":true} /-->
+    <!-- wp:post-title {"isLink":true} /-->
+    <!-- wp:post-excerpt /-->
   <!-- /wp:post-template -->
 
   <!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->
