@@ -220,7 +220,8 @@ function guidoncini_register_meta () {
 	'squadriglia' => 'Nome della squadriglia.',
 	'specialita' => 'Specialità per la quale la sq sta lavorando.',
 	'gruppo' => 'Gruppo della sq.',
-	'zona' => 'Zona della sq.'
+	'zona' => 'Zona della sq.',
+	'anno' => 'Anno dell\'edizione dei Guidoncini Verdi.'
     );
     foreach ( $fields as $key => $val ) {
 	$args = array(
@@ -247,7 +248,7 @@ add_action( 'rest_api_init', 'guidoncini_register_meta' );
 
 // Mostra in user-edit.php i campi addizionali
 function guidoncini_show_extra_profile_fields ( $user ) {
-    $fields = array( 'squadriglia' => '', 'specialita' => '', 'gruppo' => '', 'zona' => '');
+    $fields = array( 'squadriglia' => '', 'specialita' => '', 'gruppo' => '', 'zona' => '', 'anno' => '');
     foreach ( $fields as $key => $value ) {
 	$fields[$key] = get_the_author_meta( $key, $user->ID );
     }
@@ -294,7 +295,7 @@ function guidoncini_update_profile_fields( $user_id ) {
     if ( ! current_user_can( 'edit_user', $user_id ) ) {
 	return false;
     }
-    $fields = array( 'squadriglia', 'specialita', 'gruppo', 'zona' );
+    $fields = array( 'squadriglia', 'specialita', 'gruppo', 'zona', 'anno' );
     foreach ( $fields as $field ) {
 	if ( ! empty( $_POST[$field] ) ) {
 	    update_user_meta( $user_id, $field, $_POST[$field] );
