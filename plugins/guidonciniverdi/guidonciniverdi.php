@@ -25,10 +25,10 @@ add_filter( 'ajax_query_attachments_args', 'guidoncini_show_current_sq_attachmen
 function guidoncini_show_current_sq_attachments_list( $query ) {
     global $user_ID;
     if ( function_exists( 'get_current_screen')  ) { 
-	    $screen = get_current_screen(); 
+	$screen = get_current_screen(); 
     } else {
-		return $query;
-	}
+	return $query;
+    }
     if ( in_array( $screen->id, array( 'upload' ) ) ) {
         if ( ! current_user_can( 'edit_others_posts' ) ) {
             $query['author'] = $user_ID;
@@ -72,6 +72,7 @@ register_deactivation_hook( __FILE__, 'guidoncini_enable_sq_post_deletion' );
 // - Mappa la capability create_posts a create_posts nel post type 'post'
 // - Impedisci al ruolo di author di creare post
 function guidoncini_add_create_posts_cap( $args ) {
+    $args['show_in_rest'] = true;
     $args['map_meta_cap'] = true;
     $args['capabilities']['create_posts'] = 'create_posts';
     return $args;
@@ -182,7 +183,9 @@ function guidoncini_register_taxonomy_specialita () {
 	'show_ui' => true,
 	'show_admin_column' => true,
 	'query_var' => true,
-	'rewrite' => true
+	'rewrite' => true,
+	'public' => true,
+	'show_in_rest' => true
     );
     register_taxonomy( 'specialita', [ 'post' ], $args);
     guidoncini_add_specialita_to_taxonomy();
