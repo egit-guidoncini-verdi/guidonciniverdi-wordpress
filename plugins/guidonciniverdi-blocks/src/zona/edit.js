@@ -40,7 +40,10 @@ export default function Edit( {
 	'meta',
 	postId
     );
-    const { zona } = meta;
+    var { ['zona']: zona } = meta;
+    if (zona === "") {
+	zona = "Nome della zona non definito"
+    }
     return (
 	<p { ...useBlockProps() }>
 	    { zona }

@@ -61,9 +61,12 @@ function Edit({
   }
 }) {
   const [meta, updateMeta] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.useEntityProp)('postType', 'post', 'meta', postId);
-  const {
-    gruppo
+  var {
+    ['gruppo']: gruppo
   } = meta;
+  if (gruppo === "") {
+    gruppo = "Nome del gruppo non definito";
+  }
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
   }, gruppo);

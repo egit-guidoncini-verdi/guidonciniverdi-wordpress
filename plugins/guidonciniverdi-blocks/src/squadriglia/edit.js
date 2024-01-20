@@ -40,7 +40,10 @@ export default function Edit( {
 	'meta',
 	postId
     );
-    const { squadriglia } = meta;
+    var { ['squadriglia']: squadriglia } = meta;
+    if (squadriglia === "") {
+	squadriglia = "Nome della squadriglia non definito"
+    }
     return (
 	<p { ...useBlockProps() }>
 	    { squadriglia }

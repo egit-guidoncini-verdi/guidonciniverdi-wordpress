@@ -40,7 +40,10 @@ export default function Edit( {
 	'meta',
 	postId
     );
-    const { gruppo } = meta;
+    var { ['gruppo']: gruppo } = meta;
+    if (gruppo === "") {
+	gruppo = "Nome del gruppo non definito"
+    }
     return (
 	<p { ...useBlockProps() }>
 	    { gruppo }

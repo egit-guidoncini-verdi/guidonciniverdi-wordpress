@@ -40,7 +40,10 @@ export default function Edit( {
 	'meta',
 	postId
     );
-    const { specialita } = meta;
+    var { ['specialita']: specialita } = meta;
+    if (specialita === "") {
+	specialita = "Nome della specialità non definito"
+    }
     return (
 	<p { ...useBlockProps() }>
 	    { specialita }
