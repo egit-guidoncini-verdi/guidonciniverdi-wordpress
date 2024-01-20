@@ -3,13 +3,26 @@
 }
 
 .main-cover-text {
-  @apply flex flex-col md:flex-row justify-between 
-    my-16 md:my-8 p-8 border-b-8 bg-white text-black;
+  @apply flex flex-col justify-between
+    mt-16 mb-32 md:my-8 p-8 border-b-8 bg-white text-black;
   border-color: var(--wp--preset--color--verde-eg);
 
-  .wp-block-post-title a {
-    @apply text-5xl font-bold mb-8;
+  @screen md {
+    width: 50%;
+  }
+
+  .wp-block-post-title a, h1.main-title {
+    @apply text-4xl md:text-5xl font-bold mb-8;
     color: var(--wp--preset--color--verde-eg);
+  }
+  
+  .wp-block-query-title {
+    @apply text-4xl md:text-5xl mb-8;
+
+    span {
+      @apply font-bold block;
+      color: var(--wp--preset--color--verde-eg);
+    }
   }
 }
 
@@ -18,7 +31,7 @@
 }
 
 .entry-content {
-  @apply mb-8;
+  @apply mb-8 mx-4 md:mx-0;
 
   .wp-block-group, .wp-block-columns {
     @apply gap-4;
