@@ -140,6 +140,12 @@
           "fontFamily": "var(--wp--preset--font-family--roboto-slab)"
         }
       }
+    },
+    "spacing": {
+      "padding": {
+        "left": "1rem",
+        "right": "1rem"
+      }
     }
   },
   "templateParts": [
