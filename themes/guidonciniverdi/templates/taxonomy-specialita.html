@@ -5,13 +5,15 @@
   <div class="wp-block-cover alignfull main-cover">
     <span aria-hidden="true" class="wp-block-cover__background has-background-dim"></span>
     <div class="wp-block-cover__inner-container">
-      <!-- wp:html -->
-      <div class="alignwide">
-        <div class="main-cover-text">
+      <!-- wp:group {"className":"alignwide"} -->
+      <div class="wp-block-group alignwide">
+        <!-- wp:group {"className":"main-cover-text"} -->
+        <div class="wp-block-group main-cover-text">
           <!-- wp:query-title {"type":"archive", "className": "has-text-color"} /-->
         </div>
+        <!-- /wp:group -->
       </div>
-      <!-- /wp:html -->
+      <!-- /wp:group -->
     </div>
   </div>
   <!-- /wp:cover -->
