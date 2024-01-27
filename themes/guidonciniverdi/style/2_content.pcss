@@ -11,7 +11,7 @@
     width: 50%;
   }
 
-  .wp-block-post-title a, h1.main-title {
+  .wp-block-post-title a, .main-title {
     @apply text-4xl md:text-5xl font-bold mb-8;
     color: var(--wp--preset--color--verde-eg);
   }
@@ -28,6 +28,20 @@
 
 .entry-content-container {
   @apply mb-12;
+}
+
+.wp-block-post-title {
+  @apply text-4xl md:text-5xl font-bold mb-8;
+  color: var(--wp--preset--color--verde-eg);
+
+  .taxonomy-query & {
+    @apply text-black mb-0;
+  }
+
+  .single-post .category-presentazione & {
+    /* Nascondi il titolo per la presentazione della squadriglia */
+    display: none;
+  }
 }
 
 .entry-content {
@@ -107,4 +121,8 @@
   .wp-block-post-title {
     @apply mt-4 text-xl font-bold;
   }
+}
+
+.diario-di-bordo {
+
 }
