@@ -369,7 +369,6 @@ function guidoncini_query_block_filter_specialita( $query ) {
     if ( $query['s'] == ':guidoncini-filter-specialita' ) {
 	$queried_object = get_queried_object();
  	$query['s'] = '';
-	$query['category_name'] = 'presentazione';
 	$query['tax_query'] = array(
 	    array(
 	 	'taxonomy' => 'specialita',
