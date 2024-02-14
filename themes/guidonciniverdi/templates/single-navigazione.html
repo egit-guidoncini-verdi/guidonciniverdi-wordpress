@@ -1,0 +1,93 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:query {"tagName":"main"} -->
+<main class="wp-block-query">
+  <!-- wp:post-template -->
+    <!-- wp:group {"layout":{"type":"constrained"}} -->
+    <div class="wp-block-group">
+      <!-- wp:cover {"useFeaturedImage":true,"dimRatio":50,"align":"full","layout":{"type":"constrained"}} -->
+      <div class="wp-block-cover alignfull main-cover">
+        <span aria-hidden="true" class="wp-block-cover__background has-background-dim"></span>
+        <div class="wp-block-cover__inner-container">
+          <!-- wp:html -->
+          <div class="alignwide">
+            <div class="main-cover-text">
+              <!-- wp:guidonciniverdi-blocks/squadriglia {"className":"main-title has-text-color"} /-->
+              <div class="flex flex-col gap-4 mb-4">
+                <!-- TODO: link verso specialità e gruppo scout -->
+                <div class="deco-div spec">
+                  <div class="deco-contents">
+                    <p>Specialità:</p>
+                    <!-- wp:guidonciniverdi-blocks/specialita {"className":"deco-value"} /-->
+                  </div>
+                </div>
+                <div class="deco-div gruppo">
+                  <div class="deco-contents">
+                    <p>Gruppo Scout:</p>
+                    <!-- wp:guidonciniverdi-blocks/gruppo {"className":"deco-value"} /-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /wp:html -->
+        </div>
+      </div>
+      <!-- /wp:cover -->
+      
+      <!-- wp:group {"layout":{"type":"constrained"},"className":""} -->
+      <div class="wp-block-group">
+        <!-- wp:post-excerpt /-->
+      </div>
+      <!-- /wp:group -->
+    </div>
+    <!-- /wp:group -->
+  <!-- /wp:post-template -->
+
+<!-- wp:group {"className":"diario-di-bordo","layout":{"type":"constrained"}} -->
+<div class="wp-block-group diario-di-bordo"><!-- wp:group {"layout":{"type":"constrained"}} -->
+<!-- wp:heading {"level":1,"fontSize":"x-large"} -->
+<h1 class="wp-block-heading has-x-large-font-size"><strong>Diario di Bordo</strong></h1>
+<!-- /wp:heading -->
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:query {"queryId":0,"query":{"perPage":5,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":":guidoncini-filter-sq","exclude":[],"sticky":"","inherit":false}} -->
+<div class="wp-block-query"><!-- wp:post-template -->
+<!-- wp:columns -->
+<div class="wp-block-columns"><!-- wp:column {"width":""} -->
+<div class="wp-block-column"><!-- wp:post-featured-image /--></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":""} -->
+<div class="wp-block-column"><!-- wp:post-title {"isLink":true,"fontSize":"large"} /-->
+
+<!-- wp:post-excerpt /--></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+<!-- /wp:post-template -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph {"placeholder":"Nessun articolo per questa squadriglia!."} -->
+<p></p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results --></div>
+<!-- /wp:query --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+  <!-- wp:group {"layout":{"type": "constrained"}} -->
+      <div class="wp-block-group entry-content-container">
+      <!-- wp:query-pagination -->
+          <!-- wp:query-pagination-previous /-->
+
+          <!-- wp:query-pagination-numbers /-->
+
+          <!-- wp:query-pagination-next /-->
+      <!-- /wp:query-pagination -->
+      </div>
+      <!-- /wp:group -->
+  </main>
+<!-- /wp:query -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
