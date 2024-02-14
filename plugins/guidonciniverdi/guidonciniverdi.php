@@ -8,6 +8,33 @@ if ( ! defined( 'ABSPATH' ) )
     exit( 'Restricted access' );
 
 /*
+ * Custom post type navigazione
+ */
+
+function guidoncini_navigazione_post_type() {
+    $labels = array(
+	'name'          => __('Navigazione', 'textdomain')
+    );
+    $args = array(
+	'labels'      => $labels,
+	'public'      => true,
+	'publicly_queryable' => true,
+	'show_ui'            => true,
+	'show_in_menu'       => true,
+	'show_in_rest'       => true,
+	'query_var'          => true,
+	'has_archive'        => true,
+	'capability_type'    => array( 'post', 'posts' ),
+	'map_meta_cap'       => true,
+	'show_in_admin_bar' => true,
+	'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields' ),
+    );
+    register_post_type('navigazione', $args);
+}
+
+add_action('init', 'guidoncini_navigazione_post_type');
+
+/*
  * Restrizione degli utenti
  */
 
@@ -187,7 +214,7 @@ function guidoncini_register_taxonomy_specialita () {
 	'public' => true,
 	'show_in_rest' => true
     );
-    register_taxonomy( 'specialita', [ 'post' ], $args);
+    register_taxonomy( 'specialita', [ 'post', 'navigazione' ], $args);
     guidoncini_add_specialita_to_taxonomy();
 }
 add_action( 'init', 'guidoncini_register_taxonomy_specialita' );
@@ -198,8 +225,7 @@ function guidoncini_add_category_terms() {
 	array( 'name' => 'Presentazione', 'slug' => 'presentazione' ),
 	array( 'name' => 'Prima impresa', 'slug' => 'prima_impresa' ),
 	array( 'name' => 'Seconda impresa', 'slug' => 'seconda_impresa' ),
-	array( 'name' => 'Missione', 'slug' => 'missione' ),
-	array( 'name' => 'Senza Categoria', 'slug' => 'uncategorized' ),
+	array( 'name' => 'Missione', 'slug' => 'missione' )
     );
     foreach ( $categories as $category ) {
 	if ( ! term_exists( $category['slug'], 'category' ) ) {
@@ -233,6 +259,7 @@ function guidoncini_register_meta () {
 	);
 	register_meta( 'user', $key, $args );
 	register_meta( 'post', $key, $args );
+	register_meta( 'navigazione', $key, $args);
     }
     $args = array(
 	'type' => 'boolean',
@@ -243,6 +270,7 @@ function guidoncini_register_meta () {
     );
     register_meta( 'user', 'rinnovo', $args );
     register_meta( 'post', 'rinnovo', $args );
+    register_meta( 'navigazione', 'rinnovo', $args );
 }
 add_action( 'rest_api_init', 'guidoncini_register_meta' );
 
