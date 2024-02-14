@@ -152,7 +152,31 @@ register_deactivation_hook( __FILE__, 'guidoncini_enable_sq_profile_page' );
 function guidoncini_redirect_sq_on_login( $redirect_to, $requested_redirect_to, $user ) {
     if ( $user && is_object( $user ) && is_a( $user, 'WP_User' ) &&
 	 ! user_can($user, 'edit_others_posts') ) {
-        $redirect_to = esc_url( get_author_posts_url( $user->ID ) );
+	$query = new WP_Query(
+	    array (
+		'post_type' => 'navigazione',
+		'meta_query' => array (
+		    array (
+			'key' => 'squadriglia',
+			'value' => get_user_meta( $user->ID, 'squadriglia' ),
+		    ),
+		    array (
+			'key' => 'gruppo',
+			'value' => get_user_meta( $user->ID, 'gruppo' ),
+		    ),
+		    array (
+			'key' => 'anno',
+			'value' => get_user_meta( $user->ID, 'anno' ),
+		    ),
+		),
+	    )
+	);
+	if ( !empty( $query->posts ) ) {
+	    $redirect_to = get_post_permalink( $query->posts[0] );
+	}
+	else {
+            $redirect_to = esc_url( get_author_posts_url( $user->ID ) );
+	}
     }
     return $redirect_to;
 }
