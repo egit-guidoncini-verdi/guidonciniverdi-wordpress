@@ -69,9 +69,9 @@ add_filter( 'request', 'guidoncini_show_current_sq_attachments_list' );
 // Permetti solo a editor e admin (blocca author e contributor)
 // di vedere articoli non scritti da loro
 function guidoncini_show_current_sq_posts( $query ) {
-    global $pagenow, $user_ID;
-    if ( 'edit.php' != $pagenow || !$query->is_admin )
-	return $query;
+    global $pagenow, $user_ID; 
+    /* if ( ('edit.php' != $pagenow && 'upload.php' != $pagenow) || !$query->is_admin )
+       return $query; */
     if ( ! current_user_can( 'edit_others_posts' ) ) {
 	global $user_ID;
 	$query->set( 'author', $user_ID );
@@ -125,16 +125,6 @@ function guidoncini_disable_admin_post_creation() {
     $role->remove_cap( 'create_posts' );
 }
 register_deactivation_hook( __FILE__, 'guidoncini_disable_admin_post_creation' );
-
-// Nascondi i terms di ogni tassonomia alle squadriglie
-// Nascondi i terms di ogni tassonomia al ruolo author
-function guidonciniverdi_hide_sq_category_display( $terms ) {
-    if ( ! current_user_can( 'edit_others_posts' ) ) {
-	$terms = array();
-    }
-    return $terms;
-}
-add_filter('get_terms', 'guidonciniverdi_hide_sq_category_display');
 
 // Impedisci alle sq di accedere alla dashboard
 // Impedisci al ruolo author di accedere alla dashboard
@@ -236,7 +226,13 @@ function guidoncini_register_taxonomy_specialita () {
 	'query_var' => true,
 	'rewrite' => true,
 	'public' => true,
-	'show_in_rest' => true
+	'show_in_rest' => true,
+	'capabilities' => array(
+	    'manage_terms' => 'manage_categories',
+	    'edit_terms' => 'manage_categories',
+	    'delete_terms' => 'manage_categories',
+	    'assign_terms' => 'manage_categories'
+	)
     );
     register_taxonomy( 'specialita', [ 'post', 'navigazione' ], $args);
     guidoncini_add_specialita_to_taxonomy();
@@ -259,6 +255,16 @@ function guidoncini_add_category_terms() {
     }    
 }
 add_action( 'init', 'guidoncini_add_category_terms' );
+
+// Separa assign_terms da edit_posts
+function guidoncini_category_args ( $args, $taxonomy ) {
+    if ( 'category' != $taxonomy ) {
+	return $args;
+    }
+    $args['capabilities']['assign_terms'] = 'manage_categories';
+    return $args;
+}
+add_filter( 'register_taxonomy_args', 'guidoncini_category_args', 10, 2);
 
 /*
  * Attributi addizionali degli utenti
