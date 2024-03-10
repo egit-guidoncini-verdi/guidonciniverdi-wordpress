@@ -37,7 +37,7 @@
       
       <!-- wp:group {"layout":{"type":"constrained"},"className":""} -->
       <div class="wp-block-group">
-        <!-- wp:post-excerpt /-->
+        <!-- wp:post-content /-->
       </div>
       <!-- /wp:group -->
     </div>
@@ -46,13 +46,13 @@
 
 <!-- wp:group {"className":"diario-di-bordo","layout":{"type":"constrained"}} -->
 <div class="wp-block-group diario-di-bordo"><!-- wp:group {"layout":{"type":"constrained"}} -->
-<!-- wp:heading {"level":1,"fontSize":"x-large"} -->
-<h1 class="wp-block-heading has-x-large-font-size"><strong>Diario di Bordo</strong></h1>
+<!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">Diario di Bordo</h1>
 <!-- /wp:heading -->
 <!-- /wp:group -->
 
 <!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group"><!-- wp:query {"queryId":0,"query":{"perPage":5,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":":guidoncini-filter-sq","exclude":[],"sticky":"","inherit":false}} -->
+<div class="wp-block-group"><!-- wp:query {"queryId":0,"query":{"perPage":5,"pages":0,"offset":0,"postType":"post","order":"asc","orderBy":"date","author":"","search":":guidoncini-filter-sq","exclude":[],"sticky":"","inherit":false}} -->
 <div class="wp-block-query"><!-- wp:post-template -->
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column {"width":""} -->
@@ -60,9 +60,10 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"width":""} -->
-<div class="wp-block-column"><!-- wp:post-title {"isLink":true,"fontSize":"large"} /-->
-
-<!-- wp:post-excerpt /--></div>
+<div class="wp-block-column">  
+  <!-- wp:post-title {"isLink":true,"fontSize":"large"} /-->
+  <!-- wp:post-excerpt {"moreText":"Continua a leggere..."} /-->
+</div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 <!-- /wp:post-template -->
