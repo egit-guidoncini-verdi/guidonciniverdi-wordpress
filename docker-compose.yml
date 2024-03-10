@@ -45,7 +45,16 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     volumes:
       - db:/var/lib/mysql
-
+    
+  phpmyadmin:
+    image: phpmyadmin:latest
+    tags: phpmyadmin
+    environment:
+      PMA_HOST: db
+      UPLOAD_LIMIT: 1G
+    ports:
+      - 8081:80
+      
 volumes:
   wordpress:
   db:
