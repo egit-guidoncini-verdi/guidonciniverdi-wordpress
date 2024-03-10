@@ -37,11 +37,6 @@
   .taxonomy-query & {
     @apply text-black mb-0;
   }
-
-  .single-post .category-presentazione & {
-    /* Nascondi il titolo per la presentazione della squadriglia */
-    display: none;
-  }
 }
 
 .entry-content {
@@ -56,7 +51,15 @@
   }
   
   h2 {
-    @apply mb-4 text-2xl font-bold;
+    @apply my-4 text-2xl font-bold;
+  }
+
+  p {
+    @apply mb-2;
+  }
+
+  summary {
+    @apply my-4 text-2xl font-bold;
   }
 }
 
@@ -124,5 +127,15 @@
 }
 
 .diario-di-bordo {
+  h1 {
+    @apply text-4xl md:text-5xl font-bold mb-8;
+  }
 
+  .wp-block-post-title {
+    @apply mb-4;
+  }
+}
+
+.wp-block-post-excerpt .wp-block-post-excerpt__more-text {
+  @apply mt-2 underline;
 }
