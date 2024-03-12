@@ -103,7 +103,23 @@
 }
 
 .taxonomy-query {
-  @apply grid gap-8 md:grid-cols-3 mb-16;
+  @apply mb-16;
+
+  nav a {
+    @apply underline;
+  }
+
+  .page-numbers {
+    @apply mr-2;
+  }
+
+  .current {
+    @apply font-bold;
+  }
+}
+
+.taxonomy-query-grid {
+  @apply grid gap-8 md:grid-cols-3 mb-8;
 
   ul {
     display: contents;

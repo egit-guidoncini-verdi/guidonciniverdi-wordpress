@@ -21,14 +21,18 @@
 
 <!-- wp:group {"layout":{"inherit":true}} -->
 <div class="wp-block-group">
-<!-- wp:query {"tagName":"main","query":{"perPage":10,"pages":0,"offset":0,"postType":"navigazione","order":"asc","orderBy":"date","search":":guidoncini-filter-specialita","inherit":false}} -->
+<!-- wp:query {"tagName":"main","query":{"perPage":12,"pages":0,"offset":0,"postType":"navigazione","order":"asc","orderBy":"date","search":":guidoncini-filter-specialita","inherit":false}} -->
 <main class="wp-block-query taxonomy-query">
+  <!-- wp:group {"layout":{"inherit":true},"className":"taxonomy-query-grid"} -->
+  <div class="wp-block-group taxonomy-query-grid">
   <!-- wp:post-template -->
     <!-- wp:post-featured-image {"isLink":true} /-->
     <!-- wp:post-title {"isLink":true} /-->
     <!-- wp:guidonciniverdi-blocks/gruppo /-->
     <!-- wp:post-excerpt /-->
   <!-- /wp:post-template -->
+  </div>
+  <!-- /wp:group -->
 
   <!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->
   <!-- wp:query-pagination-previous /-->
