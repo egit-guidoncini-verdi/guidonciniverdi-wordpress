@@ -1,7 +1,8 @@
 {
   "name": "guidonciniverdi",
   "scripts": {
-    "dev": "postcss --watch --verbose -o style.css style/main.pcss",
+    "dev": "tailwindcss --watch --postcss -o style.css -i style/main.pcss",
+    "build": "tailwindcss --minify --postcss -o style.css -i style/main.pcss",
     "start-sync-server": "browser-sync start --files 'style.css,templates/*.html,parts/*.html' --no-notify"
   },
   "devDependencies": {

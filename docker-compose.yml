@@ -24,17 +24,18 @@ services:
       - wordpress:/var/www/html
       - ./themes:/var/www/html/wp-content/themes:rw,z
       - ./plugins:/var/www/html/wp-content/plugins:rw,z
-  
+
   frontend:
     <<: *base-frontend
     command: npm run dev
-  
+    tty: true
+
   frontend-reloader:
     <<: *base-frontend
     command: npm run start-sync-server
     ports:
       - 3000:3000
-  
+
   db:
     image: mysql:5.7
     restart: always
@@ -45,7 +46,7 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     volumes:
       - db:/var/lib/mysql
-    
+
   phpmyadmin:
     image: phpmyadmin:latest
     tags: phpmyadmin
@@ -54,7 +55,7 @@ services:
       UPLOAD_LIMIT: 1G
     ports:
       - 8081:80
-      
+
 volumes:
   wordpress:
   db:
