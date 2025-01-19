@@ -1,0 +1,73 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:query {"tagName":"main"} -->
+<main class="wp-block-query">
+  <!-- wp:post-template -->
+  <!-- wp:group {"layout":{"type":"constrained"}} -->
+  <div class="wp-block-group">
+    <!-- wp:cover {"useFeaturedImage":true,"dimRatio":50,"align":"full","layout":{"type":"constrained"}} -->
+    <div class="wp-block-cover alignfull main-cover">
+      <span
+        aria-hidden="true"
+        class="wp-block-cover__background has-background-dim"
+      ></span>
+      <div class="wp-block-cover__inner-container">
+        <!-- wp:html -->
+        <div class="alignwide">
+          <div class="main-cover-text">
+            <!-- wp:guidonciniverdi-blocks/squadriglia {"className":"main-title has-text-color"} /-->
+            <div class="flex flex-col gap-4 mb-4">
+              <!-- TODO: link verso specialità e gruppo scout -->
+              <div class="deco-div spec">
+                <div class="deco-contents">
+                  <p>Specialità:</p>
+                  <!-- wp:guidonciniverdi-blocks/specialita {"className":"deco-value"} /-->
+                </div>
+              </div>
+              <div class="deco-div gruppo">
+                <div class="deco-contents">
+                  <p>Gruppo Scout:</p>
+                  <!-- wp:guidonciniverdi-blocks/gruppo {"className":"deco-value"} /-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /wp:html -->
+      </div>
+    </div>
+    <!-- /wp:cover -->
+
+    <!-- wp:group {"layout":{"type":"constrained"},"className":""} -->
+    <div class="wp-block-group">
+      <!-- wp:group {"layout":{"type":"flex"}} -->
+      <div class="wp-block-group entry-after-content">
+        <!-- wp:html -->
+        <p>
+          Ultimo aggiornamento:
+          <!-- wp:post-date {"displayType":"modified"} /-->
+        </p>
+        <!-- /wp:html -->
+      </div>
+      <!-- /wp:group -->
+    </div>
+    <!-- /wp:group -->
+  </div>
+  <!-- /wp:group -->
+  <!-- /wp:post-template -->
+
+  <!-- wp:group {"layout":{"type": "constrained"}} -->
+  <div class="wp-block-group entry-content-container">
+    <!-- wp:query-pagination -->
+    <!-- wp:query-pagination-previous /-->
+
+    <!-- wp:query-pagination-numbers /-->
+
+    <!-- wp:query-pagination-next /-->
+    <!-- /wp:query-pagination -->
+  </div>
+  <!-- /wp:group -->
+</main>
+<!-- /wp:query -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

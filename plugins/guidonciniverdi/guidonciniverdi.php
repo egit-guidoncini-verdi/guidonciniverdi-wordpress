@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) )
     exit( 'Restricted access' );
 
 /*
- * Custom post type navigazione
+ * Custom post type navigazione (v1)
  */
 
 function guidoncini_navigazione_post_type() {
@@ -33,6 +33,33 @@ function guidoncini_navigazione_post_type() {
 }
 
 add_action('init', 'guidoncini_navigazione_post_type');
+
+/*
+ * Custom post type squadriglia (v2)
+ */
+
+function guidoncini_squadriglia_v2_post_type() {
+    $labels = array(
+	'name'          => __('Squadriglia (v2)', 'textdomain')
+    );
+    $args = array(
+	'labels'      => $labels,
+	'public'      => true,
+	'publicly_queryable' => true,
+	'show_ui'            => true,
+	'show_in_menu'       => true,
+	'show_in_rest'       => true,
+	'query_var'          => true,
+	'has_archive'        => true,
+	'capability_type'    => array( 'post', 'posts' ),
+	'map_meta_cap'       => true,
+	'show_in_admin_bar' => true,
+	'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields' ),
+    );
+    register_post_type('squadriglia_v2', $args);
+}
+
+add_action('init', 'guidoncini_squadriglia_v2_post_type');
 
 /*
  * Restrizione degli utenti
@@ -234,7 +261,7 @@ function guidoncini_register_taxonomy_specialita () {
 	    'assign_terms' => 'manage_categories'
 	)
     );
-    register_taxonomy( 'specialita', [ 'post', 'navigazione' ], $args);
+    register_taxonomy( 'specialita', [ 'post', 'navigazione', 'squadriglia_v2' ], $args);
     guidoncini_add_specialita_to_taxonomy();
 }
 add_action( 'init', 'guidoncini_register_taxonomy_specialita' );
@@ -291,6 +318,7 @@ function guidoncini_register_meta () {
 	register_meta( 'user', $key, $args );
 	register_meta( 'post', $key, $args );
 	register_meta( 'navigazione', $key, $args);
+	register_meta( 'squadriglia_v2', $key, $args);
     }
     $args = array(
 	'type' => 'boolean',
@@ -302,6 +330,7 @@ function guidoncini_register_meta () {
     register_meta( 'user', 'rinnovo', $args );
     register_meta( 'post', 'rinnovo', $args );
     register_meta( 'navigazione', 'rinnovo', $args );
+    register_meta( 'squadriglia_v2', 'rinnovo', $args );
 }
 add_action( 'rest_api_init', 'guidoncini_register_meta' );
 
@@ -400,6 +429,7 @@ function guidoncini_query_block_filter_specialita( $query ) {
     if ( $query['s'] == ':guidoncini-filter-specialita' ) {
 	$queried_object = get_queried_object();
  	$query['s'] = '';
+ 	$query['post_type'] = ["squadriglia_v2", "navigazione"];
 	$query['tax_query'] = array(
 	    array(
 	 	'taxonomy' => 'specialita',
