@@ -26,7 +26,8 @@ function guidoncini_navigazione_post_type() {
 	'has_archive'        => true,
 	'capability_type'    => array( 'post', 'posts' ),
 	'map_meta_cap'       => true,
-	'show_in_admin_bar' => true,
+	'show_in_admin_bar'  => true,
+	'taxonomies'         => ['category'],
 	'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields' ),
     );
     register_post_type('navigazione', $args);
@@ -245,7 +246,9 @@ function guidoncini_add_category_terms() {
 	array( 'name' => 'Presentazione', 'slug' => 'presentazione' ),
 	array( 'name' => 'Prima impresa', 'slug' => 'prima_impresa' ),
 	array( 'name' => 'Seconda impresa', 'slug' => 'seconda_impresa' ),
-	array( 'name' => 'Missione', 'slug' => 'missione' )
+	array( 'name' => 'Missione', 'slug' => 'missione' ),
+	array( 'name' => 'Navigazione', 'slug' => 'navigazione' ),
+	array( 'name' => 'Pagina unica', 'slug' => 'pagina_unica' )
     );
     foreach ( $categories as $category ) {
 	if ( ! term_exists( $category['slug'], 'category' ) ) {
@@ -400,11 +403,18 @@ function guidoncini_query_block_filter_specialita( $query ) {
     if ( $query['s'] == ':guidoncini-filter-specialita' ) {
 	$queried_object = get_queried_object();
  	$query['s'] = '';
+ 	$query['post_type'] = ["post", "navigazione"];
 	$query['tax_query'] = array(
+		'relation' => 'AND',
 	    array(
-	 	'taxonomy' => 'specialita',
-	 	'field' => 'slug',
-	 	'terms' => $queried_object->slug
+			'taxonomy' => 'specialita',
+			'field' => 'slug',
+			'terms' => $queried_object->slug
+		),
+		array(
+			'taxonomy' => 'category',
+			'field' => 'slug',
+			'terms' => ['navigazione', 'pagina_unica']
 	    )
 	);
     }
