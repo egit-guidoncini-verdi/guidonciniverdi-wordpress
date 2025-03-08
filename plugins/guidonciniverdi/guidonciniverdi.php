@@ -148,9 +148,9 @@ function guidoncini_redirect_sq_on_login( $redirect_to, $requested_redirect_to, 
 		'author' => $user->ID,
 		'posts_per_page' => 1,
 	);
-	$recent_posts = get_posts($argsq);
+	$post_ID = get_posts($argsq)[0]->ID;
 	if (!empty($recent_posts)) {
-		$redirect_to = get_permalink($recent_posts[0]);
+			$redirect_to = get_permalink($post_ID);
 	}
 	else {
             $redirect_to = esc_url( get_author_posts_url( $user->ID ) );
