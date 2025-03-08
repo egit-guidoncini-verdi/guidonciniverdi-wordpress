@@ -144,15 +144,13 @@ function guidoncini_redirect_sq_on_login( $redirect_to, $requested_redirect_to, 
     if ( $user && is_object( $user ) && is_a( $user, 'WP_User' ) &&
 	 ! user_can($user, 'edit_others_posts') ) {
 	// Get the most recent post by the logged-in author
-	$args = [
+	$argsq = array(
 		'author' => $user->ID,
 		'posts_per_page' => 1,
-		'orderby' => 'date',
-		'order' => 'DESC',
-	];
-	$recent_posts = get_posts($args);
+	);
+	$recent_posts = get_posts($argsq);
 	if (!empty($recent_posts)) {
-		$redirect_to = get_permalink($recent_posts[0]->ID);
+		$redirect_to = get_permalink($recent_posts[0]);
 	}
 	else {
             $redirect_to = esc_url( get_author_posts_url( $user->ID ) );
